@@ -2,7 +2,7 @@
 
 This is a simple dockerized challenge for list, add, remove and edit images and descriptions
 
-##Intructions to install and run:
+## Intructions to install and run:
 - Install docker on you OS.
 - Clone this repo
 - execute:
