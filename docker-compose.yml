@@ -1,0 +1,25 @@
+version: "2"
+services:
+  app:
+    container_name: draggable
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongoDB
+  
+  mongoDB:
+    container_name: draggablemongo
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  mongo-seed:
+    image: mongo
+    links:
+      - mongoDB
+    volumes:
+      - ./seed:/seed-data
+    command:
+      'bash -c "mongoimport --host mongoDB --type json --db draggable --collection items --file /seed-data/init.json --jsonArray"'
